@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rain Encounter Simulator</title>
+    <meta name="description" content="How many raindrops hit you crossing a set distance in the rain? Closed-form equations and a 3D particle simulation, side by side." />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3c5 7 9 11.500 9 16.500a9 9 0 0 1-18 0C7 14.500 11 10 16 3z' fill='%232a78d6'/%3E%3C/svg%3E" />
+    <script>
+      // Apply a saved theme before first paint.
+      try {
+        const theme = localStorage.getItem('rain-sim-theme');
+        if (theme === 'light' || theme === 'dark') document.documentElement.setAttribute('data-theme', theme);
+      } catch {}
+    </script>
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <header class="intro">
+          <h1>Rain encounter simulator</h1>
+          <p>How many raindrops hit you on the way there, and does running help?</p>
+          <div class="toolbar" id="toolbar"></div>
+        </header>
+        <div id="controls"></div>
+      </aside>
+
+      <main class="main">
+        <section class="top">
+          <div class="card viz" id="viz"><div class="viz-loading">Loading the 3D view…</div></div>
+          <div class="tiles" id="tiles"></div>
+        </section>
+
+        <div class="splitter" id="splitter"></div>
+
+        <div class="charts-head">
+          <h2>Analytic model</h2>
+          <div class="legend" id="face-legend" aria-label="Faces of the person"></div>
+        </div>
+
+        <section class="chart-grid">
+          <figure class="card chart">
+            <figcaption>
+              <span class="chart-title">Total hits vs speed</span>
+              <span class="chart-sub">by face · ○ simulated run · ■ mean of 100 trials</span>
+            </figcaption>
+            <div class="chart-body" id="chart-hits-speed" role="img" aria-label="Stacked area chart of total hits against speed, split by face"></div>
+          </figure>
+          <figure class="card chart">
+            <figcaption>
+              <span class="chart-title">Hit rate vs speed</span>
+              <span class="chart-sub">drops per second, by face</span>
+            </figcaption>
+            <div class="chart-body" id="chart-rate-speed" role="img" aria-label="Stacked area chart of hit rate in drops per second against speed, split by face"></div>
+          </figure>
+          <figure class="card chart">
+            <figcaption>
+              <span class="chart-title">Total hits vs rain angle</span>
+              <span class="chart-sub">at the current speed, by face</span>
+            </figcaption>
+            <div class="chart-body" id="chart-hits-angle" role="img" aria-label="Stacked area chart of total hits against rain angle at the current speed, split by face"></div>
+          </figure>
+          <figure class="card chart">
+            <figcaption>
+              <span class="chart-title">Total hits over speed × rain angle</span>
+              <span class="chart-sub ramp-legend" id="heatmap-legend" aria-label="Colour scale, logarithmic, fewest to most hits"></span>
+            </figcaption>
+            <div class="chart-body" id="chart-heatmap" role="img" aria-label="Heatmap of total hits over speed and rain angle, with the optimum speed marked"></div>
+          </figure>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
