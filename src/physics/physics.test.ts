@@ -102,9 +102,9 @@ describe('optimum speed', () => {
     expectWithin(opt.hits, 3478, 1);
     expectWithin(totalHits(with_({ thetaDeg: 20, s: opt.speed })).total, opt.hits, 1e-6);
 
-    // The spec quotes N ≈ 3,495, which is N at the rounded speed 2.38 rather
-    // than at the optimum itself: N has a kink there and climbs steeply on
-    // the slow side.
+    // N has a kink at the optimum and climbs steeply on the slow side, so
+    // rounding the speed to 2.38 already gives 3,495. An earlier draft of the
+    // spec quoted that figure as the optimum.
     expectWithin(totalHits(with_({ thetaDeg: 20, s: 2.38 })).total, 3495, 1);
   });
 

@@ -58,7 +58,7 @@ Also report: standard deviation `√N` (hits are Poisson), water collected `N·V
 - If `w_x > 0` and `A_front·w_x > A_top·v_t + A_side·|w_y|`: the best speed is exactly `s* = w_x` (match the rain's drift so nothing hits front or back); going faster than that makes it worse.
 - Otherwise: faster is always better, with diminishing returns toward a floor of `n·D·A_front` as `s → ∞` (at infinite speed only the front face sweeps up drops).
 
-Reference values for unit tests (defaults, `θ = 0` unless noted): `v_t ≈ 6.55 m/s`, `n ≈ 101.3 /m³`, spacing ≈ 0.215 m. `N` at s = 1.4 / 3 / 6 / 10 m/s ≈ 14,783 / 11,625 / 10,243 / 9,691. With `θ = +20°`: 12,144 / 4,585 / 6,724 / 7,579, and the optimum is `s* ≈ 2.38 m/s` with `N ≈ 3,495`. With `θ = −20°`: 29,868 / 18,665 / 13,763 / 11,803.
+Reference values for unit tests (defaults, `θ = 0` unless noted): `v_t ≈ 6.55 m/s`, `n ≈ 101.3 /m³`, spacing ≈ 0.215 m. `N` at s = 1.4 / 3 / 6 / 10 m/s ≈ 14,783 / 11,625 / 10,243 / 9,691. With `θ = +20°`: 12,144 / 4,585 / 6,724 / 7,579, and the optimum is `s* ≈ 2.383 m/s` with `N ≈ 3,478`. With `θ = −20°`: 29,868 / 18,665 / 13,763 / 11,803.
 
 ## Analytic panel
 
